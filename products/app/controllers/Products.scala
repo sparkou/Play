@@ -16,7 +16,7 @@ class Products @Inject() (val messagesApi: MessagesApi) extends Controller with 
     Ok(views.html.products.list(products))
   }
 
-  def show(ean: Long) = Action {
+  def show(ean: Long) = Action { implicit request =>
     Product.findByEan(ean).map { product =>
       Ok(views.html.products.details(product))
     }.getOrElse(NotFound)
