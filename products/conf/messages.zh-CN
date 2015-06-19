@@ -1,0 +1,6 @@
+application.name = 产品目录
+ean = EAN
+name = 名称
+description = 描述
+
+product.details = 产品: {0}
