@@ -4,14 +4,14 @@
 
   <dl class="products">
     @for(product <- products) {
-      <dt><a href="@controllers.routes.Product.show(product.ean)"> @product.name </a></dt>
+      <dt><a href="@controllers.routes.Products.show(product.ean)"> @product.name </a></dt>
       <dd>@product.description</dd>
     }
   </dl>
 
   <p>
-    <a href="@controllers.routes.Product.newProduct()" class="btn">
-      <i class="icon-plus"></i>@Messages("products.new.command")
+    <a href="@controllers.routes.Products.newProduct()" class="btn">
+      <i class="icon-plus"></i>@Messages("product.new.command")
     </a>
 
   </p>
