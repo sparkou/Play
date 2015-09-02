@@ -1,0 +1,220 @@
+/*==============================| CSS RESET |==============================*/
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+
+}
+
+:focus {
+    /*outline: 2px solid blue;*/  /* ENABLE FOR DEV HIGHLIGHTS FOCUS. REMOVE FOR PROD */
+}
+
+ol, ul {
+    list-style: none;
+}
+
+caption, th, td {
+    text-align: left;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: "";
+}
+
+blockquote, q {
+    quotes: "" "";
+}
+
+img {
+    border:0;
+    margin-bottom:10px;
+}
+
+a img {
+    border:0;
+}
+
+img a {
+    border:0;
+}
+
+/*==============================| BACKGROUND |==============================*/
+
+body {
+    background: #fefcf7;
+    text-align: left;
+    color: #363636;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    border-bottom:5px solid #29551a;
+    position:absolute;
+    line-height:1;
+}
+
+blockquote {
+    font-size:15px;
+    color:#6a6a6a;
+    font-style:italic;
+    font-family:"Times New Roman", Times, serif;
+    line-height:1.5em;
+    padding: 0 15px;
+}
+
+blockquote p {
+    font-size:15px;
+    color:#6a6a6a;
+    font-style:italic;
+    font-family:"Times New Roman", Times, serif;
+    line-height:1.5em;
+}
+
+#wrapper {
+    /*min-width: 735px;
+    max-width: 960px;*/ /*uncomment min-width and max-width (and comment width) to create an elastic site*/
+    width: 960px;
+    padding: 5px 38px;
+    background: #fffefa;
+    margin: 0px auto;
+    box-shadow: 0px 0px 7px #999999;
+    -webkit-box-shadow: 0px 0px 7px #999999;
+    -moz-box-shadow: 0px 0px 7px #999999;
+}
+
+.clear {
+    clear:both;
+}
+
+
+
+#container {
+    width: 1040px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background: #fffefa;
+    box-shadow: 0px 0px 7px #999999;
+    -webkit-box-shadow: 0px 0px 7px #999999;
+    -moz-box-shadow: 0px 0px 7px #999999;
+}
+
+
+
+
+
+
+/*==============================| HEADER & TOP NAVIGATION |==============================*/
+
+#header{
+    width: 100%;
+    font-size:13px;
+    font-weight:bold;
+    font-family:"Calibri", Arial, Helvetica, sans-serif;
+    color:#363636;
+}
+
+#header hr {
+    height:5px;
+    width:100%;
+    clear:both;
+    background-color: #29551a;
+    border-top:none;
+    margin:0;
+    padding:0;
+}
+
+#header a {
+    text-decoration:none;
+    color:#363636;
+    margin:0 1em 0 0;
+    padding:5px 0;
+    float:left;
+    font-weight:normal;
+}
+
+#header a:hover {
+    color: #6f6345;
+}
+
+/*==============================| PRIMARY NAVIGATION |==============================*/
+
+#cp{
+    background: #f9f6ef;
+    color: #252525;
+    width: 100%;
+    border-top: 1px solid #d1cfc7;
+    border-bottom: 1px solid #d1cfc7;
+    position:relative;
+    float: none;
+    margin-bottom:10px;
+    margin-top:20px;
+    z-index: 600;
+    height: 36px; /* This is necessary for the top green bar to work on the large nav, but it creates a bit of overlap if the window size is small */
+}
+
+#cp ul{
+    border-top: 1px solid #ffffff;
+    padding-top: 3px;
+}
+
+#cp ul a{
+    text-decoration: none;
+}
+
+#cp ul li{
+    color: #252525;
+    display: block;
+    float: left;
+    text-decoration: none;
+    height: 29px;
+    border-right: 1px solid #d1cfc7;
+    border-left: 1px solid #ffffff;
+    padding: 0px 10px;
+    line-height: 35px;
+    background-color: #f9f6ef;
+    font-size: 0.95em;
+}
+
+#cp ul li a{
+    color: #252525;
+    text-decoration: none;
+    height: 31px; /* Ensure that the focus outline is visible */
+    margin: 0; /* Ensure that the focus outline is visible */
+    margin-top:-3px; /* Vertically center the text on the menu */
+    display: block;
+    line-height: 31px;
+
+}
+
+#cp ul li.cpActive{
+    background-color: #ffffff;
+    height: 40px;
+}
+
+
+#cp ul li:first-child li{
+    border-left: none;
+}
+
+#cp ul li:last-child li{
+    border-right: none;
+}
+
+#cp ul li a:hover{
+    color: #000000;
+    text-decoration:underline;
+}
+

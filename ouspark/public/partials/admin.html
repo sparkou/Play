@@ -1,0 +1,17 @@
+<form id="form">
+    <div id="editor">
+    </div>
+</form>
+
+<script>
+    jQuery(document).ready(function($) {
+
+        $('#editor').markdownEditor({
+            preview: true,
+            onPreview: function (content, callback) {
+                callback( marked(content) );
+            }
+        });
+
+    });
+</script>
