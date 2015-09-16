@@ -36,6 +36,23 @@ class Application @Inject() (uuidGenerator: UUIDGenerator) extends Controller {
     Ok(views.html.home(javascripts))
   }
 
+  def home1(title: String) = Action {
+    val javascripts = {
+      if (Play.isDev) {
+        // Load all .js and .coffeescript files within app/assets
+        Option(Play.getFile("app/assets")).
+          filter(_.exists).
+          map(findScripts).
+          getOrElse(Nil)
+      } else {
+        // Concated and minified by UglifyJS
+        "concat.min.js" :: Nil
+      }
+    }
+
+    Ok(views.html.home(javascripts))
+  }
+
   def index = Action {
     logger.info("Serving index page...")
 
@@ -79,12 +96,4 @@ class Application @Inject() (uuidGenerator: UUIDGenerator) extends Controller {
     logger.info("calling UUIDGenerator...")
     Ok(uuidGenerator.generate.toString)
   }
-
-
-  def findBlogs = Action {
-    val source = scala.io.Source.fromFile("app/assets/data/data.json")
-    val lines = try source.mkString finally source.close()
-    Ok(lines).as("application/json")
-  }
-
 }

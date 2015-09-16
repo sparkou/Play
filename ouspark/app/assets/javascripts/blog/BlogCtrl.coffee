@@ -19,17 +19,4 @@ class BlogCtrl
               @$log.error "Unable to get Users: #{error}"
             )
 
-    getBlog: () ->
-        @$log.debug "getBlog()"
-
-        @BlogService.findBlog("data")
-        .then(
-          (data) =>
-            @$log.debug "Promise returned #{data.length} Users"
-            @blogs = data
-        ,
-          (error) =>
-            @$log.error "Unable to get Users: #{error}"
-        )
-
 blogControllersModule.controller('BlogCtrl', ['$log', 'BlogService', BlogCtrl])

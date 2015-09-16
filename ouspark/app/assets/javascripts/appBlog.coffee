@@ -7,7 +7,10 @@ blogDependencies = [
   'myBlog.controllers',
   'myBlog.directives',
   'myBlog.common',
-  'myBlog.routeConfig'
+  'myBlog.routeConfig',
+  'colorpicker.module',
+  'wysiwyg.module',
+  'ngSanitize'
 ]
 blog = angular.module('myBlog', blogDependencies)
 
@@ -16,19 +19,24 @@ angular.module('myBlog.routeConfig', ['ngRoute'])
     $routeProvider
     .when('/home', {
         templateUrl: '/assets/partials/listPage.html',
-#        controller: 'BlogCtrl as bl'
+        controller: 'BlogCtrl as bl'
       })
     .when('/content/:title', {
         templateUrl: '/assets/partials/content.html',
-#        controller: 'BlogSearchCtrl as bl'
+        controller: 'BlogSearchCtrl as bl'
       })
     .when('/about', {
         templateUrl: '/assets/partials/about.html'
       })
     .when('/admin', {
         templateUrl: '/assets/partials/admin.html'
+#        controller: 'BlogAdminCtrl as ba'
       })
-    .otherwise({redirectTo: '/'})])
+    .when('/contact', {
+        templateUrl: '/assets/partials/contact.html'
+#        controller: 'BlogContactCtrl as bc'
+      })
+    .otherwise({redirectTo: '/home'})])
 .config(['$locationProvider', ($locationProvider) ->
     $locationProvider.html5Mode({
       enabled: true,

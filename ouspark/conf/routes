@@ -12,7 +12,13 @@ GET         /home                             @controllers.Application.home
 GET         /about                            @controllers.Application.home
 GET         /admin                            @controllers.Application.home
 GET         /blogs                            @controllers.Blogs.findAll
-POST        /content/:title                        @controllers.Blogs.findByTitle(title: String)
+GET         /q/content/:title                 @controllers.Blogs.findByTitle(title: String)
+GET         /content/:title                   @controllers.Application.home1(title: String)
+GET         /contact                          @controllers.Application.home
+POST        /blog                             @controllers.Blogs.createBlog
+
+POST         /send                             controllers.ApplicationScala.send
+
 
 # User management API
 GET         /users                            @controllers.Users.findUsers
@@ -21,3 +27,5 @@ PUT         /user/:firstName/:lastName        @controllers.Users.updateUser(firs
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                     controllers.Assets.versioned(path="/public", file: Asset)
+
+GET         /:title                           @controllers.Application.home1(title: String)

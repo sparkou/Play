@@ -1,17 +1,43 @@
-<form id="form">
-    <div id="editor">
-    </div>
-</form>
 
-<script>
-    jQuery(document).ready(function($) {
+<div ng-controller="BlogAdminCtrl as ba">
 
-        $('#editor').markdownEditor({
-            preview: true,
-            onPreview: function (content, callback) {
-                callback( marked(content) );
-            }
-        });
+	<script type="text/javascript">
+		$(document).ready(
+				function()
+				{
+					$('#redactor_content').redactor({
+						minHeight: 680
+					});
+				}
+		);
+	</script>
+	<form id="blogForm" class="form-horizontal" ng-submit="ba.createBlog()">
+		<div class="form-group">
+			<div class="col-sm-10">
+				<input type="text" class="form-control" ng-model="ba.blog.title" placeholder="Title here...">
+			</div>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" ng-model="ba.blog.tag" placeholder="Tag...">
+			</div>
+		</div>
+		<div class="form-group">
+			<div style="margin-left: 15px; margin-right: 15px">
+				<textarea id="redactor_content" name="content"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<wysiwyg textarea-id="question"
+					 textarea-class="form-control"
+					 textarea-height="100px"
+					 textarea-name="textareaQuestion"
+					 textarea-required
+					 ng-model="ba.blog.content"
+					 enable-bootstrap-title="true"
+					 textarea-menu="ba.menu"
+					 disabled="disabled">
+			</wysiwyg>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
 
-    });
-</script>

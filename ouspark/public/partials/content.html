@@ -1,42 +1,21 @@
-<div ng-controller="BlogSearchCtrl as bl">
-    <div class="contentLine"></div>
-    <table id="user_list" class="table table-striped">
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>Views</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="bs in bl.blogs">
-            <td>
-                <a ng-href="{{ bs.title }}" target="_self">{{ bs.title }}</a>
-            </td>
-            <td>
-                {{ bs.views }}
-            </td>
-        </tr>
-        <tr ng-hide="bl.blogs.length">
-            <td colspan="3">
-                <p class="text-center">No Blogs Found</p>
-            </td>
-        </tr>
-        </tbody>
-    </table>
 
-    <h3>
-        Debug
-    </h3>
+    <div class="contentLine"></div>
+
+    <div ng-bind-html="bl.blog[0].content"></div>
+
+    <div ng-hide="bl.blog">
+        <p class="text-center">No Blogs Found</p>
+    </div>
     <hr>
-    <accordion>
-        <accordion-group is-open="status.open">
-            <accordion-heading>
-                Json Data <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-            </accordion-heading>
-            <pre>{{ bl.blogs | json }}</pre>
-        </accordion-group>
-    </accordion>
-</div>
+    <!--<accordion>-->
+        <!--<accordion-group is-open="status.open">-->
+            <!--<accordion-heading>-->
+                <!--Json Data <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>-->
+            <!--</accordion-heading>-->
+            <!--<pre>{{ bl.blog | json }}</pre>-->
+        <!--</accordion-group>-->
+    <!--</accordion>-->
+
 
 
 <div class="clear"></div>

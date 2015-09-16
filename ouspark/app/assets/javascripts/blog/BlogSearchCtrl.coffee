@@ -6,19 +6,16 @@ class BlogSearchCtrl
     @blog = []
     @getBlog()
 
-
   getBlog: () ->
     @$log.debug "getBlog()"
-
-    @BlogService.findBlog("data", blog)
+    @BlogService.findBlog(@$routeParams.title)
     .then(
       (data) =>
-        alert("I am in")
         @$log.debug "Promise returned #{data.length} Users"
-        @blogs = data
+        @blog = data
     ,
       (error) =>
         @$log.error "Unable to get Users: #{error}"
     )
 
-blogControllersModule.controller('BlogSearchCtrl', ['$log', 'BlogService', BlogSearchCtrl])
+blogControllersModule.controller('BlogSearchCtrl', ['$log', '$location', '$routeParams', 'BlogService', BlogSearchCtrl])

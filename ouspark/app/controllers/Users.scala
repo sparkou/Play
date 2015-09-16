@@ -49,10 +49,10 @@ class Users extends Controller with MongoController {
         user =>
         // `user` is an instance of the case class `models.User`
           collection.insert(user).map {
-            lastError =>
-              logger.debug(s"Successfully inserted with LastError: $lastError")
-              Created(s"User Created")
-          }
+          lastError =>
+            logger.debug(s"Successfully inserted with LastError: $lastError")
+            Created(s"User Created")
+        }
       }.getOrElse(Future.successful(BadRequest("invalid json")))
   }
 

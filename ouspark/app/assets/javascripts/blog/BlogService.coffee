@@ -23,10 +23,9 @@ class BlogService
     deferred.promise
 
   findBlog: (title) ->
-      @$log.debug "find Blog #{angular.toJson(blogs, true)}"
+      @$log.debug "find Blog"
       deferred = @$q.defer()
-
-      @$http.post("/content/#{title}")
+      @$http.get("/q/content/#{title}")
       .success((data, status, headers) =>
         @$log.info("Successfully find Blog - status #{status}")
         deferred.resolve(data)
@@ -37,7 +36,36 @@ class BlogService
       )
       deferred.promise
 
+  createBlog: (blog) ->
+      @$log.debug "createBlog "
+      deferred = @$q.defer()
 
+      @$http.post('/blog', blog)
+      .success((data, status, headers) =>
+        @$log.info("Successfully created User - status #{status}")
+        deferred.resolve(data)
+      )
+      .error((data, status, headers) =>
+        @$log.error("Failed to create user - status #{status}")
+        deferred.reject(data)
+      )
+      deferred.promise
+
+
+  sendEmail: (mail) ->
+      @$log.debug "sendEmail"
+      deferred = @$q.defer()
+
+      @$http.post('/send', mail)
+      .success((data, status, headers) =>
+        @$log.info("Successfully send Email - status #{status}")
+        @$log.debug "sendEmailSuccessful"
+        deferred.resolve(data)
+      )
+      .error((data, status, headers) =>
+        @$log.error("Failed to create user - status #{status}")
+      )
+      deferred.promise
 
 blogServicesModule.service('BlogService', ['$log', '$http', '$q', BlogService])
 

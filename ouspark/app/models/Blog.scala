@@ -6,10 +6,11 @@ import java.util.Date
  * Created by spark.ou on 8/27/2015.
  */
 case class Blog( title: String,
-//                 description: String,
-//                 article: String,
-//                 datePublish: Date,
-//                 dateRevision: Date,
+                 description: String,
+                 content: String,
+                 datePublish: Date,
+                 tag: String,
+                 active: Boolean,
                  views: Int
                  )
 
