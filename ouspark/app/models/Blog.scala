@@ -13,7 +13,12 @@ case class Blog( title: String,
                  active: Boolean,
                  views: Int
                  )
-
+case class SimpleBlog (title: String,
+                       datePublish: Date,
+                       tag: String,
+                       active: Boolean,
+                       views: Int
+                       )
 object JsonFormats2 {
   import play.api.libs.json.Json
 

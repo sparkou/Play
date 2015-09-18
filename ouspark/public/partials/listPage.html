@@ -2,7 +2,7 @@
     <div class="contentLine"></div>
 
     <div id="mainLeft" ng-repeat="bs in bl.blogs">
-        <h2><a ng-href="/content/{{bs.title}}">{{bs.title}}</a></h2>
+        <h2><a ui-sref="content({title: bs.title})">{{bs.title}}</a></h2>
         <div ng-hide="bl.blogs.length">
             <p class="text-center">No Blogs Found</p>
         </div>
