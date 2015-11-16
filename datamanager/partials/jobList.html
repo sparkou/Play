@@ -1,0 +1,115 @@
+<header class="header">
+    <h1>
+        <a href="#" onclick="returnListView()"><i class=""></i></a>
+        <span ng-if="type == 'export'">Export Jobs</span>
+        <span ng-if="type == 'import'">Import Jobs</span>
+        <span ng-if="type == 'delete'">Delete Jobs</span>
+    </h1>
+    <a class="refresh" href="javascript: location.reload();"></a>
+</header>
+<div class="work-space">
+    <div class="workspace-no-utility-menu">
+
+        <div id="displayBody">
+            <div id="listContainer">
+                <input type="text" class="" ng-model="keyName" placeholder="Find Job Name..."/>
+                <input type="text" class="hidden" ng-model="alljobs"/>
+                <table id="AccelaMainTable" class="AccelaMainTable" border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                    <tr></tr>
+                    <tr width="13810">
+                        <th class="portlet-section-subheader" width="150" align="left" valign="top" nowrap="">
+                            <a href="#" target="_self">Name</a>
+                        </th>
+                        <th class="portlet-section-subheader" width="150" align="left" valign="top" nowrap="">
+                            <a href="#" target="_self">Schedule Status</a>
+                        </th>
+                        <th class="portlet-section-subheader" width="120" align="left" valign="top" nowrap="">
+                            <a href="#" target="_self">Job Status</a>
+                        </th>
+                        <th class="portlet-section-subheader" width="150" align="left" valign="top" nowrap="">
+                            <a href="#" target="_self">Start Date</a>
+                        </th>
+                        <th class="portlet-section-subheader" width="100" align="left" valign="top" nowrap="">
+                            <a href="#" target="_self">Start Time</a>
+                        </th>
+                        <th class="portlet-section-subheader" width="200" align="left" valign="top" nowrap="">
+                            <a href="#" target="_self">Description</a>
+                        </th>
+                        <th class="portlet-section-subheader" width="200" align="left" valign="top" nowrap="">
+                            <a href="#" target="_self">Action</a>
+                        </th>
+                    </tr>
+                    <tr ng-repeat="job in jobs">
+                        <td class="portlet-section-body" ng-if="(type == 'export')"><a id="expLinkRow1" ui-sref="job.expSummary({type: type, jobName: job.configModel.jobName})">{{job.configModel.jobName}}</a></td>
+                        <td class="portlet-section-body" ng-if="(type == 'import')"><a id="impLinkRow1" ui-sref="job.impSummary({type: type, jobName: job.configModel.jobName})">{{job.configModel.jobName}}</a></td>
+                        <td class="portlet-section-body" ng-if="(type == 'delete')"><a id="delLinkRow1" ui-sref="job.delSummary({type: type, jobName: job.configModel.jobName})">{{job.configModel.jobName}}</a></td>
+                        <td class="portlet-section-body">{{job.batchJobModel.scheduleType}}</td>
+                        <td class="portlet-section-body">{{job.batchJobModel.jobStatus}}</td>
+                        <td class="portlet-section-body">{{job.batchJobModel.startDate}}</td>
+                        <td class="portlet-section-body">{{job.batchJobModel.startTime}}</td>
+                        <td class="portlet-section-body">{{job.configModel.description}}</td>
+                        <td class="portlet-section-body" ng-if="type == 'export'">
+                            <div class="task-filter-button dropdown" uib-dropdown is-open="isopen">
+                                <button id="exp-action-{{job.configModel.jobName}}" type="button" class="btn btn-default btn-filter" uib-dropdown-toggle ng-disabled="disabled">
+                                    Action <span class="custom-caret" role="presentation"></span>
+                                </button>
+                                <ul class="uib-dropdown-menu" role="menu" aria-labelledby="action-{{job.configModel.jobName}}">
+                                    <li role="menuitem"><a href="#">Start</a></li>
+                                    <li role="menuitem"><a href="#">Schedule</a></li>
+                                    <li role="menuitem"><a href="#">Stop</a></li>
+                                    <li role="menuitem"><a href="#">Save as</a></li>
+                                    <li class="divider"></li>
+                                    <li role="menuitem"><a href="#">Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="portlet-section-body" ng-if="type == 'import'">
+                            <div class="task-filter-button dropdown" uib-dropdown is-open="isopen">
+                                <button id="imp-action-{{job.configModel.jobName}}" type="button" class="btn btn-default btn-filter" uib-dropdown-toggle ng-disabled="disabled">
+                                    Action <span class="custom-caret" role="presentation"></span>
+                                </button>
+                                <ul class="uib-dropdown-menu" role="menu" aria-labelledby="action-{{job.configModel.jobName}}">
+                                    <li role="menuitem"><a href="#">Start</a></li>
+                                    <li role="menuitem"><a href="#">Schedule</a></li>
+                                    <li role="menuitem"><a href="#">Stop</a></li>
+                                    <li role="menuitem"><a href="#">View Import Log</a></li>
+                                    <li class="divider"></li>
+                                    <li role="menuitem"><a href="#">Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="portlet-section-body" ng-if="type == 'delete'">
+                            <div class="task-filter-button dropdown" uib-dropdown is-open="isopen">
+                                <button id="del-action-{{job.configModel.jobName}}" type="button" class="btn btn-default btn-filter" uib-dropdown-toggle ng-disabled="disabled">
+                                    Action <span class="custom-caret" role="presentation"></span>
+                                </button>
+                                <ul class="uib-dropdown-menu" role="menu" aria-labelledby="action-{{job.configModel.jobName}}">
+                                    <li role="menuitem"><a href="#">Start</a></li>
+                                    <li role="menuitem"><a href="#">Schedule</a></li>
+                                    <li role="menuitem"><a href="#">Stop</a></li>
+                                    <li role="menuitem"><a href="#">Back up</a></li>
+                                    <li role="menuitem"><a href="#">Download Backup File</a></li>
+                                    <li role="menuitem"><a href="#">Recover</a></li>
+                                    <li role="menuitem"><a href="#">Log</a></li>
+                                    <li class="divider"></li>
+                                    <li role="menuitem"><a href="#">Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr></tr>
+                    </tbody>
+                </table>
+
+                <div id="pagingInfo" style="margin-top: 5px;">
+                    &nbsp;&nbsp; Page &nbsp;
+                    <input name="page-navigator-input-id" id="page-navigator-input-id" type="text" class="page-navigator-input portlet-form-input-field" ng-model="currentPage"  value="{{currentPage}}" style="width: 35px; height: 19px;">
+                    / {{numPages}}
+                    <uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages"></uib-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

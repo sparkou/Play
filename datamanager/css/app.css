@@ -1,0 +1,18 @@
+/* app css stylesheet */
+
+
+#utility-menu .utility-item-nav {
+  width: 100%;
+  background-color: #f5f6f5;
+  overflow-y: auto;
+  padding-left: 10px;
+  display: none;
+}
+#utility-menu .utility-item-nav a:hover,
+#utility-menu .utility-item-nav a:active {
+  color: #3a9cca;
+}
+
+.navActive {
+  display: block !important;
+}

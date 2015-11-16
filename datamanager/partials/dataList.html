@@ -1,0 +1,49 @@
+
+<script type="text/javascript">
+    function func1() {
+        var url = '/portlets/cap/capSearch.do?pageSize=5&amp;module=Building&amp;totalPages=11&amp;pageNo=@@##@@';
+        var index = document.getElementById('page-navigator-input-id').value; if(index&lt;1){index=1;}
+        var pageCount = document.getElementById('pagenavigatorsize').value; if(index-pageCount&gt;0){index = pageCount; };
+        var newURL=url.replace('@@##@@', index);return SimulateClick('1','accelasubmitbuttonname','','action',newURL, 'target', '_self');
+    }
+</script>
+<input type="text" class="hidden" ng-model="allrows"/>
+<table id="AccelaMainTable" class="AccelaMainTable" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody>
+    <tr>
+        <input type="text" class="" ng-model="keyName" placeholder="Find by {{cols[0].title}}..."/>
+    </tr>
+    <tr width="13810">
+        <th class="portlet-section-subheader-checkbox" width="22">
+            <input type="checkbox" name="value(ac360_list_id)" id="ac360_list_id" value="1" ng-model="master" title="Select All">
+        </th>
+        <th class="portlet-section-subheader" width="150" align="left" valign="top" nowrap="" ng-repeat="col in cols">
+            <input type="checkbox" ng-if="col.check == 'Y'" title="Select All">
+            <a href="#" target="_self">{{col.title}}</a>
+        </th>
+    </tr>
+    <tr class="singleRow" id="row1" onclick="" onmouseout="" onmouseover="" ng-repeat="row in rows | filter: keyName">
+        <td class="AlignL-td-border" nowrap="">
+            <input type="checkbox" name="value(chk_capSPC,0)" property="value(chk_capSPC,0)" id="ac360_list_id_r0" value="0" ng-checked="master"  title="Select">
+        </td>
+        <td class="portlet-section-body" ng-repeat="col in cols">
+            <div ng-if="col.key.indexOf('.') == -1">
+                <input type="checkbox" ng-if="col.check == 'Y' && row[col.key] == null" disabled="disabled" title="Select All">
+                <input type="checkbox" ng-if="col.check == 'Y' && row[col.key] != null" title="Select All">&nbsp;{{row[col.key]}}
+            </div>
+            <div ng-if="col.key.indexOf('.') > -1">
+                <input type="checkbox" ng-if="col.check == 'Y' && row[col.key] == null" disabled="disabled" title="Select All">
+                <input type="checkbox" ng-if="col.check == 'Y' && row[col.key] != null" title="Select All">&nbsp;{{row[col.key.split('.')[0]][(col.key).split('.')[1]]}}
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div id="pagingInfo" style="margin-top: 5px;">
+    &nbsp;&nbsp; Page &nbsp;
+    <input name="page-navigator-input-id" id="page-navigator-input-id" type="text" class="page-navigator-input portlet-form-input-field" ng-model="currentPage"  value="{{currentPage}}" style="width: 35px; height: 19px;">
+    / {{numPages}}
+    <uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages"></uib-pagination>
+</div>
+
+
