@@ -59,12 +59,12 @@ class Reports extends Controller with MongoController {
       }.getOrElse(Future.successful(BadRequest("invalid json")))
   }
 
-  def updateUser(firstName: String, lastName: String) = Action.async(parse.json) {
+  def updateUser(name: String, date: String) = Action.async(parse.json) {
     request =>
       request.body.validate[Report].map {
         rpt =>
           // find our user by first name and last name
-          val nameSelector = Json.obj("firstName" -> firstName, "lastName" -> lastName)
+          val nameSelector = Json.obj("name" -> name, "date" -> date)
           collection.update(nameSelector, rpt).map {
             lastError =>
               logger.debug(s"Successfully updated with LastError: $lastError")
@@ -96,6 +96,16 @@ class Reports extends Controller with MongoController {
       rpts =>
         Ok(rpts(0))
     }
+  }
+
+  def deleteReport(name: String, date: String) = Action {
+    val nameSelector = Json.obj("name" -> name, "date" -> date)
+    collection.remove(nameSelector).map{
+      lastError =>
+        logger.debug(s"Successfully delete with LastError: $lastError")
+        Created(s"Report Deleted")
+    }
+    Ok("200")
   }
 
 }
