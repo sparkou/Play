@@ -1,3 +1,4 @@
+
 *.iml
 dailyreport/.idea/*
 dailyreport/project/target/*
@@ -5,3 +6,17 @@ dailyreport/target/*
 dailyreport/project/project/*
 dailyreport/activator-launch-1.3.6.jar
 dailyreport/logs/application.log
+
+
+activator
+
+activator.bat
+
+dailyreport/activator
+
+activator-launch-1.3.7.jar
+
+dailyreport/activator-launch-1.3.6.jar
+
+dailyreport/activator.bat
+

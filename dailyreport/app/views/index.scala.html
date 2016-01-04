@@ -8,8 +8,9 @@
     <link rel="stylesheet" href='@routes.Assets.versioned("lib/bootstrap/css/bootstrap.css")'>
     <link rel="stylesheet" href='@routes.Assets.versioned("lib/bootstrap/css/bootstrap-theme.css")'>
     <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/main.css")'>
-    @*<link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/app.min.css")'>*@
+    <!--<link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/app.min.css")'>-->
 </head>
+
     <body ng-controller="ReportCtrl">
         <div class="well">
             <h2 style="text-align: center; margin-top: 50px">Daily Report</h2>
@@ -30,10 +31,28 @@
                     <table class="table table-hover">
                         <thead>
                             <th>Name</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </thead>
                         <tbody>
                             <tr ng-repeat="kitty in kitties">
                                 <td><a href="" ng-click="showReport(kitty)">{{kitty.name}}</a></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><a href="" ng-click="editReport(kitty)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
+                                <td><a href="" ng-click="removeReport(kitty)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -48,6 +67,9 @@
                 <div class="col-md-5">
                     <button class="btn btn-default" ng-click="add(users.name)" ng-disabled="nameForm.name.$invalid">Add</button>
                     <button class="btn btn-default" ng-if="kitties.length > 0" ng-click="showAll()">Show All</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Emial to &nbsp;<input typ="text" ng-model="email.address">
+                    <a ng-href="mailto:{{email.address}}?subject={{email.subject}}&body={{email.body}}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                    </a>
                 </div>
             </div>
             <div ng-view></div>
