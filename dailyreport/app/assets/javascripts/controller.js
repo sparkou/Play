@@ -3,7 +3,7 @@
  */
 var reportApp = angular.module('reportApp')
 
-reportApp.controller('ReportCtrl', function($scope, $uibModal, $http, $templateCache) {
+reportApp.controller('ReportCtrl', function($scope, $uibModal, $http, $templateCache, $compile, $timeout) {
     $scope.users = {
         names: ['Spark', 'Feng', 'Marlon', 'Felix', 'Waikei', 'Kane', 'Hyman', 'Sky', 'Melody', 'Alex', 'Weber']
     }
@@ -67,8 +67,6 @@ reportApp.controller('ReportCtrl', function($scope, $uibModal, $http, $templateC
     }
     
     $scope.showAll = function() {
-        var template = $templateCache.get('/assets/partials/showReport1.html');
-        console.log(template)
 
         //var kitties = $scope.kitties;
         //var modalInstance = $uibModal.open({
@@ -157,8 +155,8 @@ reportApp.controller('ReportCtrl', function($scope, $uibModal, $http, $templateC
     }
     getEmail = function() {
         var email = {
-            address: "463997636@qq.com",
-            subject: "Daily Report",
+            address: "spark.ou@missionsky.com",
+            subject: "Daily Report"
             //body: "Hey there James, How are things in literature land? Regards, Peter PS I can't figure out how to do carriage returns!"
         };
         email.body = "<div><p>email.subject</p></div>";
@@ -260,8 +258,8 @@ reportApp.controller('EditReportCtrl', function($scope, $uibModalInstance, $http
 });
 
 
-reportApp.controller('ShowReportCtrl', function($scope, $uibModalInstance, kitt) {
-   $scope.kitty = kitty;
+reportApp.controller('ShowReportCtrl', function($scope, $uibModalInstance, kitty) {
+   $scope.kitties = [kitty];
    $scope.cancel = function () {
        $uibModalInstance.dismiss('cancel');
    };
